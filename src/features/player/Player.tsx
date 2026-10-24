@@ -62,7 +62,7 @@ export function Player() {
 
   return (
     <div className="stadium min-h-full">
-      <div className="mx-auto flex min-h-[100dvh] max-w-md flex-col px-4 pb-[calc(var(--safe-bottom)+16px)] pt-[calc(var(--safe-top)+10px)]">
+      <div className="relative mx-auto flex min-h-[100dvh] max-w-md flex-col px-4 pb-[calc(var(--safe-bottom)+16px)] pt-[calc(var(--safe-top)+10px)]">
         <header className="flex items-center gap-2">
           <IconButton label="Esci dalla seduta" onClick={() => setMenu(true)}>
             <Close />
@@ -105,6 +105,12 @@ export function Player() {
               s.next();
             }}
           />
+        )}
+        {/* avatar persistente: non viene ricreato a ogni serie */}
+        {(step?.type === 'work' || step?.type === 'rest') && (
+          <div className="pointer-events-none absolute bottom-[calc(var(--safe-bottom)+16px)] left-4">
+            <MiniAvatarSlot />
+          </div>
         )}
       </div>
 
@@ -278,13 +284,13 @@ function WorkView({
             Prec.
           </Button>
           <Button variant="ghost" className="flex-[2]" icon={modified ? <Check size={20} /> : <><Minus size={18} /><Plus size={18} /></>} onClick={() => setEdit(true)}>
-            {modified || rpe ? 'Modificato' : 'Kg · Rip · RPE'}
+            {modified || rpe ? 'Modificato' : [hasKg && 'Kg', !item.meters && 'Rip', 'RPE'].filter(Boolean).join(' · ')}
           </Button>
         </div>
       )}
 
       <div className="flex items-end gap-3">
-        <MiniAvatarSlot />
+        <AvatarSpace />
         <Button size="cta" variant="success" className="flex-1 !min-h-[76px] text-3xl" icon={<Check size={32} />} onClick={complete}>
           {existing ? 'Aggiorna' : item.wave ? 'Step fatto' : 'Serie fatta'}
         </Button>
@@ -397,7 +403,7 @@ function RestView({ step, lastKg }: { step: Extract<Step, { type: 'rest' }>; las
       )}
 
       <div className="mt-auto flex items-end gap-3 pt-4">
-        <MiniAvatarSlot />
+        <AvatarSpace />
         {next && (
           <div className="card flex-1 p-3">
             <p className="label">Prossimo</p>
@@ -468,4 +474,9 @@ function StepList({ steps, cursor, logs, onPick }: { steps: Step[]; cursor: numb
       })}
     </ul>
   );
+}
+
+/** Spazio riservato all'avatar persistente nell'angolo in basso a sinistra. */
+function AvatarSpace() {
+  return <div className="h-[76px] w-[76px] shrink-0" aria-hidden />;
 }

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { HashRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { useProfile, useSettings } from '@/store/data';
+import { useProfile, useReducedMotion, useSettings } from '@/store/data';
 import { configureFeedback } from '@/lib/feedback';
 import { Splash } from '@/features/splash/Splash';
 import { Onboarding } from '@/features/onboarding/Onboarding';
@@ -25,7 +25,11 @@ function Gate({ children }: { children: JSX.Element }) {
 export function App() {
   const [splash, setSplash] = useState(() => !sessionStorage.getItem('splash-shown'));
   const settings = useSettings();
+  const reduced = useReducedMotion();
   useEffect(() => configureFeedback(settings), [settings]);
+  useEffect(() => {
+    document.documentElement.dataset.motion = reduced ? 'reduce' : 'full';
+  }, [reduced]);
 
   if (splash)
     return (

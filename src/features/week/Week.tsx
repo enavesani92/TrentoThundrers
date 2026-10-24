@@ -119,7 +119,7 @@ export function Week() {
             return (
               <li key={k} className="flex items-center gap-3 rounded-xl bg-white/5 px-3 py-2">
                 <span className="flex-1 text-sm">dal {formatDate(new Date(k + 'T00:00').getTime(), { day: 'numeric', month: 'short' })}</span>
-                <span className="flex gap-1" aria-label={`${n} sedute`}>
+                <span className="flex gap-1" role="img" aria-label={`${n} sedute`}>
                   {Array.from({ length: SESSIONS_PER_WEEK }, (_, i) => (
                     <span key={i} className={`h-3 w-6 rounded-full ${i < n ? 'bg-success' : 'bg-white/15'}`} />
                   ))}

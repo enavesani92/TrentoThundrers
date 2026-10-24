@@ -1,6 +1,6 @@
 # Fase 1 — Piano THUNDERS TRAINING
 
-> Stato: **in attesa di approvazione**. Le domande aperte sono in fondo (§8).
+> Stato: **approvato e implementato** (fasi 2–6). Risposte al §8: 1 ok, 2 ok, 3 recupero minimo, 4 fulmine originale, 5 lun/mer/ven modificabili.
 
 ## 1. Struttura del repo
 

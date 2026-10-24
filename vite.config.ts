@@ -34,5 +34,6 @@ export default defineConfig({
       },
     }),
   ],
+  build: { chunkSizeWarningLimit: 900 }, // il chunk 3D (three.js) è caricato a parte, solo quando serve
   test: { environment: 'node', include: ['src/**/*.test.ts'] },
 });

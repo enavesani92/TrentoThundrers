@@ -21,7 +21,7 @@ export function YardField({ yards, count, total = 3 }: { yards: number; count: n
         {/* linee delle yard */}
         {Array.from({ length: 9 }, (_, i) => (
           <div key={i} className="absolute inset-y-0 w-px bg-white/35" style={{ left: `${11 + (i + 1) * 7.8}%` }}>
-            {i % 2 === 1 && <span className="absolute -left-2 bottom-0.5 text-[9px] font-semibold text-white/60">{(i + 1) * 10 > 50 ? 100 - (i + 1) * 10 : (i + 1) * 10}</span>}
+            {i % 2 === 1 && <span className="absolute -left-2 bottom-0.5 text-[9px] font-semibold text-white/90">{(i + 1) * 10 > 50 ? 100 - (i + 1) * 10 : (i + 1) * 10}</span>}
           </div>
         ))}
         {/* palla */}
