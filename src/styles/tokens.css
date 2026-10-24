@@ -1,0 +1,28 @@
+/* Token del brand. Valori provvisori dal brief: sostituire con quelli estratti dai loghi originali
+   (vedi docs/brand-research.md e `npm run palette`). */
+:root {
+  --thunder-yellow: #ffc20e;
+  --thunder-navy: #0b1f3f;
+  --thunder-navy-deep: #061329;
+  --thunder-blue: #1d4e9e;
+  --thunder-white: #f5f7fa;
+  --thunder-steel: #8a94a6;
+  --success: #3ddc84;
+  --danger: #ff5a5f;
+
+  /* stessi colori come canali RGB, per le opacità di Tailwind (es. bg-yellow/15) */
+  --thunder-yellow-rgb: 255 194 14;
+  --thunder-navy-rgb: 11 31 63;
+  --thunder-navy-deep-rgb: 6 19 41;
+  --thunder-blue-rgb: 29 78 158;
+  --thunder-white-rgb: 245 247 250;
+  --thunder-steel-rgb: 138 148 166;
+  --success-rgb: 61 220 132;
+  --danger-rgb: 255 90 95;
+
+  --radius: 18px;
+  --tap: 56px;
+  --cta: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
