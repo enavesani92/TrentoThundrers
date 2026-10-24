@@ -16,3 +16,56 @@ body {
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
 }
+
+@layer components {
+  /* Atmosfera da stadio di notte: riflettori caldi in alto + linee delle yard */
+  .stadium {
+    background:
+      radial-gradient(120% 60% at 20% -10%, rgb(255 214 120 / 0.16), transparent 60%),
+      radial-gradient(120% 60% at 80% -10%, rgb(255 214 120 / 0.12), transparent 60%),
+      repeating-linear-gradient(180deg, transparent 0 79px, rgb(245 247 250 / 0.035) 79px 81px),
+      linear-gradient(180deg, var(--thunder-navy) 0%, var(--thunder-navy-deep) 100%);
+    background-attachment: fixed;
+  }
+  .card {
+    @apply rounded-[var(--radius)] border border-white/10 bg-white/[0.04] backdrop-blur-sm;
+  }
+  .card-blue {
+    @apply rounded-[var(--radius)] bg-blue/70 border border-white/10;
+  }
+  .label {
+    @apply font-display text-sm font-semibold uppercase tracking-[0.14em] text-steel;
+  }
+  .num {
+    @apply font-display font-bold tabular-nums leading-none;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-4 focus-visible:ring-yellow/70 focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes slide-up {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes flash {
+  0%, 100% { opacity: 0; }
+  10%, 30% { opacity: 1; }
+  20% { opacity: 0.3; }
+}
+.animate-pop { animation: pop-in 380ms cubic-bezier(.2,.9,.3,1.2) both; }
+.animate-slide-up { animation: slide-up 300ms ease-out both; }
+.animate-flash { animation: flash 900ms ease-out both; }

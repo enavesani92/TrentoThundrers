@@ -48,6 +48,7 @@ const day1: Day = {
         {
           id: 'd1-medball',
           name: 'Lanci laterali con palla medica',
+          loaded: true,
           prescription: { kind: 'straight', sets: 4, reps: r(4) },
           pairing: { with: 'd1-sprint', mode: 'in-rest' },
           unilateral: true,
@@ -89,6 +90,7 @@ const day1: Day = {
         {
           id: 'd1-bulgarian',
           name: 'Bulgarian split squat',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
           unilateral: true,
@@ -96,6 +98,7 @@ const day1: Day = {
         {
           id: 'd1-dbohp',
           name: 'Overhead press con manubri',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
         },
@@ -134,6 +137,7 @@ const day2: Day = {
         {
           id: 'd2-cablerot',
           name: 'Cable rotation explosive',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(10) },
           rest: r(1 * MIN, 2 * MIN),
           unilateral: true,
@@ -178,12 +182,14 @@ const day2: Day = {
         {
           id: 'd2-legcurl',
           name: 'Leg curl',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
         },
         {
           id: 'd2-dbbench',
           name: 'Panca manubri',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
         },
@@ -256,12 +262,14 @@ const day3: Day = {
         {
           id: 'd3-lat',
           name: 'Lat machine',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
         },
         {
           id: 'd3-slsquat',
           name: 'Single-leg squat',
+          loaded: true,
           prescription: { kind: 'straight', sets: 3, reps: r(8) },
           rest: r(1 * MIN, 2 * MIN),
           pairing: { with: 'd3-lat', mode: 'superset' },

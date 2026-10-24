@@ -18,6 +18,7 @@ export interface ActiveSession {
   cursor: number;
   logs: Record<string, SetLog>;
   restEndsAt?: number;
+  restTotal?: number; // durata del recupero in corso (s), per l'anello
   restsSkipped: number;
   conditioningLog?: ConditioningLog;
 }
@@ -103,10 +104,14 @@ export const useActiveSession = create<State>((set, get) => {
 
     next: () => update((s) => ({ ...s, cursor: Math.min(s.cursor + 1, get().steps.length), restEndsAt: undefined })),
 
-    startRest: (seconds) => update((s) => ({ ...s, restEndsAt: Date.now() + seconds * 1000 })),
+    startRest: (seconds) => update((s) => ({ ...s, restEndsAt: Date.now() + seconds * 1000, restTotal: seconds })),
 
     adjustRest: (delta) =>
-      update((s) => (s.restEndsAt ? { ...s, restEndsAt: Math.max(Date.now(), s.restEndsAt + delta * 1000) } : s)),
+      update((s) => {
+        if (!s.restEndsAt) return s;
+        const restEndsAt = Math.max(Date.now(), s.restEndsAt + delta * 1000);
+        return { ...s, restEndsAt, restTotal: Math.max(1, (s.restTotal ?? 0) + (restEndsAt - s.restEndsAt) / 1000) };
+      }),
 
     skipRest: () =>
       update((s) => {

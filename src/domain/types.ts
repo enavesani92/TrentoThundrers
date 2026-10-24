@@ -37,6 +37,7 @@ export interface Exercise {
   rest?: Range; // secondi
   pairing?: Pairing;
   unilateral?: boolean; // ripetizioni per gamba / per lato
+  loaded?: boolean; // carico esterno libero (manubri, macchina, palla): si registra senza % del 1RM
   e1rm?: LiftKey; // le serie di questo esercizio contano per il 1RM stimato del lift
   notes?: string;
 }

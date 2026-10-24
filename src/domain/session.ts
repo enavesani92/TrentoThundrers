@@ -11,11 +11,12 @@ export interface WorkItem {
   block: BlockKind;
   setIndex: number; // 0-based
   setCount: number;
-  wave?: { index: number; count: number; pct: number };
+  wave?: { index: number; count: number; pct: number; steps: { reps: number; pct: number }[] };
   reps: Range;
   meters?: Range;
   target?: LoadTarget;
   unilateral?: boolean;
+  loaded?: boolean;
   notes?: string;
   partnerLabel?: string; // es. "Superset A1" / "Coppia 1"
 }
@@ -35,7 +36,7 @@ const work = (w: WorkItem): Step => ({ type: 'work', id: w.stepId, work: w });
 
 function workItems(ex: Exercise, block: BlockKind, ctx: LoadContext): WorkItem[] {
   const p = ex.prescription;
-  const base = { exerciseId: ex.id, name: ex.name, block, unilateral: ex.unilateral, notes: ex.notes };
+  const base = { exerciseId: ex.id, name: ex.name, block, unilateral: ex.unilateral, loaded: ex.loaded, notes: ex.notes };
   if (p.kind === 'straight') {
     const target = p.intensity ? targetFor(p.intensity, ctx) : undefined;
     return Array.from({ length: p.sets }, (_, i) => ({ ...base, stepId: `${ex.id}:${i}`, setIndex: i, setCount: p.sets, reps: p.reps, target }));
@@ -72,7 +73,7 @@ function expandBlock(block: Block, ctx: LoadContext): Step[] {
               block: block.kind,
               setIndex: s,
               setCount: p.sets,
-              wave: { index: j, count: p.steps.length, pct: st.pct },
+              wave: { index: j, count: p.steps.length, pct: st.pct, steps: p.steps },
               reps: { min: st.reps, max: st.reps },
               target,
               notes: ex.notes,

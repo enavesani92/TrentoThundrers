@@ -1,16 +1,18 @@
+const c = (name) => `rgb(var(--${name}-rgb) / <alpha-value>)`;
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        yellow: 'var(--thunder-yellow)',
-        navy: { DEFAULT: 'var(--thunder-navy)', deep: 'var(--thunder-navy-deep)' },
-        blue: 'var(--thunder-blue)',
-        ink: 'var(--thunder-white)',
-        steel: 'var(--thunder-steel)',
-        success: 'var(--success)',
-        danger: 'var(--danger)',
+        yellow: c('thunder-yellow'),
+        navy: { DEFAULT: c('thunder-navy'), deep: c('thunder-navy-deep') },
+        blue: c('thunder-blue'),
+        ink: c('thunder-white'),
+        steel: c('thunder-steel'),
+        success: c('success'),
+        danger: c('danger'),
       },
       fontFamily: {
         display: ['"Barlow Condensed"', 'system-ui', 'sans-serif'],
