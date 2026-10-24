@@ -8,7 +8,7 @@ export function Screen({ children, nav = false, className = '' }: { children: Re
   return (
     <div className="stadium min-h-full">
       <div
-        className={`mx-auto flex min-h-full max-w-md flex-col px-4 pt-[calc(var(--safe-top)+12px)] ${nav ? 'pb-[calc(var(--safe-bottom)+96px)]' : 'pb-[calc(var(--safe-bottom)+20px)]'} ${className}`}
+        className={`mx-auto flex min-h-[100dvh] max-w-md flex-col px-4 pt-[calc(var(--safe-top)+12px)] ${nav ? 'pb-[calc(var(--safe-bottom)+96px)]' : 'pb-[calc(var(--safe-bottom)+20px)]'} ${className}`}
       >
         {children}
       </div>

@@ -81,6 +81,7 @@ export interface Profile {
   oneRm: Partial<Record<LiftKey, OneRm>>;
   trainingDays: number[]; // 0 = lunedì … 6 = domenica
   equipped: string[]; // id dei cosmetici equipaggiati
+  skin?: number; // indice del tono della pelle dell'avatar
   timeouts: string[]; // chiavi settimana (lunedì ISO yyyy-mm-dd) congelate
   disclaimerAcceptedAt: string;
   createdAt: string;

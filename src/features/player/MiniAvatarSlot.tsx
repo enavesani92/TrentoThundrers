@@ -1,10 +1,10 @@
-import { Bolt } from '@/ui/icons';
+import { Avatar } from '@/avatar/Avatar';
 
-/** Posto dell'avatar nel player (l'avatar 3D arriva nella Fase 4). */
+/** Avatar piccolo nel player: reagisce alle serie completate. */
 export function MiniAvatarSlot({ large = false }: { large?: boolean }) {
   return (
-    <div className={`flex shrink-0 items-center justify-center rounded-2xl bg-white/5 text-yellow ${large ? 'h-40 w-40' : 'h-[76px] w-[76px]'}`} aria-hidden>
-      <Bolt size={large ? 64 : 32} />
+    <div className={`shrink-0 overflow-hidden rounded-2xl bg-gradient-to-b from-blue/40 to-transparent ${large ? 'h-56 w-56' : 'h-[76px] w-[76px]'}`}>
+      <Avatar className="h-full w-full" />
     </div>
   );
 }
