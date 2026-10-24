@@ -23,7 +23,11 @@ npm run build      # build di produzione in dist/ con service worker
 npm run preview    # serve la build: è qui che la PWA funziona offline
 ```
 
-Per installarla su un telefono serve HTTPS (ad esempio su Netlify, Vercel o GitHub Pages: la build usa percorsi relativi e routing con hash, quindi funziona anche in una sottocartella).
+## Online
+
+Pubblicata su GitHub Pages: **https://enavesani92.github.io/TrentoThundrers/**
+
+Per aggiornarla dopo una modifica: `npm run deploy` (fa la build e la pubblica sul branch `gh-pages`). Dal telefono, apri il link e scegli "Aggiungi a schermata Home" (iPhone: Condividi → Aggiungi alla schermata Home; Android: menu → Installa app).
 
 ## Brand
 
