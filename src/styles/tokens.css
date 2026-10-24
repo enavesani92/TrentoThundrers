@@ -1,0 +1,18 @@
+/* Token del brand. Valori provvisori dal brief: sostituire con quelli estratti dai loghi originali
+   (vedi docs/brand-research.md e `npm run palette`). */
+:root {
+  --thunder-yellow: #ffc20e;
+  --thunder-navy: #0b1f3f;
+  --thunder-navy-deep: #061329;
+  --thunder-blue: #1d4e9e;
+  --thunder-white: #f5f7fa;
+  --thunder-steel: #8a94a6;
+  --success: #3ddc84;
+  --danger: #ff5a5f;
+
+  --radius: 18px;
+  --tap: 56px;
+  --cta: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
