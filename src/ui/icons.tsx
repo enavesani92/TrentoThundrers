@@ -121,7 +121,6 @@ export const Flame = (p: P) => (
 );
 export const Timeout = (p: P) => (
   <svg {...base(p)}>
-    <path d="M7 4v16M17 4v16" />
-    <path d="M7 4h10M7 20h10" />
+    <path d="M4 5h16M12 5v15" />
   </svg>
 );

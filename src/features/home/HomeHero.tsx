@@ -5,7 +5,7 @@ export function HomeHero() {
   return (
     <div className="relative -mx-4 my-2">
       <div className="pointer-events-none absolute inset-x-0 bottom-6 mx-auto h-10 w-56 rounded-[100%] bg-yellow/10 blur-xl" aria-hidden />
-      <Avatar interactive className="h-[340px] w-full" />
+      <Avatar interactive className="h-[300px] w-full" />
     </div>
   );
 }

@@ -7,19 +7,22 @@ import { useActiveSession } from '@/store/activeSession';
 import { formatDate } from '@/lib/time';
 import { Button } from '@/ui/Button';
 import { Screen } from '@/ui/layout';
-import { Bolt } from '@/ui/icons';
+import { Bolt, Flame } from '@/ui/icons';
 import { HomeHero } from './HomeHero';
+import { useGame } from '@/store/game';
+import { XpBar, YardField } from '@/ui/game';
 
 export function Home() {
   const navigate = useNavigate();
   const profile = useProfile();
   const sessions = useSessions();
   const active = useActiveSession();
+  const game = useGame();
   useEffect(() => {
     void active.load();
   }, [active]);
 
-  if (!profile || !sessions) return <Screen nav>{null}</Screen>;
+  if (!profile || !sessions || !game) return <Screen nav>{null}</Screen>;
 
   const day = nextDay(sessions);
   const last = sessions.at(-1);
@@ -39,6 +42,25 @@ export function Home() {
       </header>
 
       <HomeHero />
+
+      <section className="-mt-4 space-y-3">
+        <div className="flex items-end justify-between gap-3">
+          <div>
+            <p className="label">Livello {game.level.index + 1}</p>
+            <p className="font-display text-3xl font-extrabold uppercase leading-none text-yellow">{game.level.name}</p>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-xl bg-white/5 px-3 py-2" aria-label={`Streak: ${game.streak.current} settimane complete`}>
+            <Flame size={20} className={game.streak.current > 0 ? 'text-yellow' : 'text-steel'} />
+            <span className="num text-2xl">{game.streak.current}</span>
+            <span className="text-xs uppercase text-steel">sett.</span>
+          </div>
+        </div>
+        <XpBar progress={game.level.progress} label="XP verso il prossimo livello" />
+        <p className="text-right text-xs text-steel">
+          {game.level.next ? `${game.xp.toLocaleString('it-IT')} / ${game.level.next.xp.toLocaleString('it-IT')} XP → ${game.level.next.name}` : `${game.xp.toLocaleString('it-IT')} XP · livello massimo`}
+        </p>
+        <YardField yards={game.yards} count={game.weekCount} />
+      </section>
 
       <section className="mt-auto space-y-3 pt-4">
         {active.session ? (
